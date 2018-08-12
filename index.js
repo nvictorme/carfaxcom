@@ -30,11 +30,10 @@ const init = async (db = undefined) => {
             return vehicle.dealer;
         });
         vehicles = vehicles.map(vehicle => {
-            vehicle = {
+            return {
                 dealerId: vehicle.dealer.carfaxId,
                 ...vehicle
             };
-            return vehicle;
         });
         await Mongo.insertDocuments(db, 'demo_vehicles', vehicles);
         if (dealers.length > 0) {
