@@ -25,7 +25,9 @@ const insertDocuments = (db, coll, docs) => {
         // Get the collection
         const collection = db.collection(coll);
         // Insert some documents
-        collection.insertMany(docs, function (err, result) {
+        collection.insert(docs, {
+            ordered: false
+        }, function (err, result) {
             if (err) {
                 reject(err);
             } else {
